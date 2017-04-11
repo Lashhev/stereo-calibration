@@ -27,6 +27,12 @@ This is a small helper tool to grab frames from two webcams operating as a stere
 ./read -w [img_width] -h [img_height] -d [imgs_directory] -e [file_extension]
 ```
 
+For example, the command for the capturing pairs of images in `calib_imgs/1/` would be
+
+```bash
+./read -w 300 -h 300 -d "../calib_imgs/1/" -e "jpg"
+```
+
 Once it is running, hit any key to grab frames. Images are saved with prefixes `left` and `right` in the desired directory.
 
 ### Intrinsic calibration of a single camera

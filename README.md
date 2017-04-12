@@ -2,9 +2,15 @@
 
 This repository contains some sources to calibrate the intrinsics of individual cameras and also the extrinsics of a stereo pair.
 
+### Prerequisites
+
+- Raspberry Pi
+- USB Cameras (or you can use Pi's camera module)
+- I'm using `Raspbian`. You can use other OS like `Ubuntu Mate for Pi 3` or `Pidora` . Just make sure installation is lightweight and system does not eat up much resources.
+
 ### Dependencies
 
-- OpenCV
+- OpenCV (How to build from source on Raspberry Pi? take a look at [this](http://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/) blog post here)
 - popt
 
 ### Compilation

@@ -21,25 +21,25 @@ Make sure your are in the `build` folder to run the executables.
 
 ### Get images from webcams
 
-This is a small helper tool to grab frames from two webcams operating as a stereo pair. Run the following command to use it.
+This is a small helper tool to grab frames from two webcams operating as a stereo pair.
 
 ```bash
 ./read -w [img_width] -h [img_height] -d [imgs_directory] -e [file_extension]
 ```
 
-For example, the command for the capturing pairs of images in `calib_imgs/1/` would be
+For example, the command for the capturing pairs of images in `calib_imgs/` ( DO NOT FORGET TO CREATE IT FIRST ) would be
 
 ```bash
-./read -w 300 -h 300 -d "../calib_imgs/1/" -e "jpg"
+./read -w 640 -h 480 -d "../calib_imgs/" -e "jpg"
 ```
 
-Once it is running, hit any key to grab frames. Images are saved with prefixes `left` and `right` in the desired directory.
+Images are saved with prefixes `left` and `right` in the desired directory.
 
 ### Intrinsic calibration of a single camera
 
-This is only for lenses which follow the pinhole model. If you have fisheye lenses with a very wide field of view then see [this](https://github.com/sourishg/fisheye_stereo_calibration) repository. The calibration saves the camera matrix and the distortion coefficients in a YAML file. The datatype for these matrices is `Mat`.
+The calibration saves the camera matrix and the distortion coefficients in a YAML file. The datatype for these matrices is `Mat`.
 
-Once you have compiled the sources run the following command to calibrate the intrinsics.
+Once you have compiled the sources, run the following command to calibrate the intrinsics.
 
 ```bash
 ./calibrate -w [board_width] -h [board_height] -n [num_imgs] -s [square_size] -d [imgs_directory] -i [imgs_filename] -o [file_extension] -e [output_filename]
@@ -48,7 +48,7 @@ Once you have compiled the sources run the following command to calibrate the in
 For example, the command for the test images in `calib_imgs/1/` would be
 
 ```bash
-./calibrate -w 9 -h 6 -n 27 -s 0.02423 -d "../calib_imgs/1/" -i "left" -o "cam_left.yml" -e "jpg"
+./calibrate -w 9 -h 6 -n 27 -s 0.02423 -d "../calib_imgs/" -i "left" -o "cam_left.yml" -e "jpg"
 ```
 
 ### Stereo calibration for extrinisics
@@ -59,10 +59,10 @@ Once you have the intrinsics calibrated for both the left and the right cameras,
 ./calibrate_stereo -n [num_imgs] -u [left_cam_calib] -v [right_cam_calib] -L [left_img_dir] -R [right_img_dir] -l [left_img_prefix] -r [right_img_prefix] -o [output_calib_file]
 ```
 
-For example, if you calibrated the left and the right cameras using the images in the `calib_imgs/1/` directory, the following command to compute the extrinsics.
+For example, if you calibrated the left and the right cameras using the images in the `calib_imgs/` directory, the following command to compute the extrinsics.
 
 ```bash
-./calibrate_stereo -n 27 -u cam_left.yml -v cam_right.yml -L ../calib_imgs/1/ -R ../calib_imgs/1/ -l left -r right -o cam_stereo.yml
+./calibrate_stereo -n 27 -u cam_left.yml -v cam_right.yml -L ../calib_imgs/ -R ../calib_imgs/ -l left -r right -o cam_stereo.yml
 ```
 
 ### Undistortion and Rectification
@@ -76,5 +76,9 @@ Once you have the stereo calibration data, you can remove the distortion and rec
 For example
 
 ```bash
-./undistort_rectify -l ../calib_imgs/1/left1.jpg -r ../calib_imgs/1/right1.jpg -c cam_stereo.yml -L left.jpg -R right.jpg
+./undistort_rectify -l ../calib_imgs/left1.jpg -r ../calib_imgs/right1.jpg -c cam_stereo.yml -L left.jpg -R right.jpg
 ```
+
+## Thanks
+
+Many thanks to [sourishg](https://github.com/sourishg)

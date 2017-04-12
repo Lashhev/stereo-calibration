@@ -10,7 +10,7 @@ This repository contains some sources to calibrate the intrinsics of individual 
 
 ### Dependencies
 
-- OpenCV (How to build from source on Raspberry Pi? take a look at [this](http://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/) blog post here)
+- OpenCV (How to build it from source on Raspberry Pi? Take a look at [this](http://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/) detailed blog post on how to)
 - popt
 
 ### Compilation

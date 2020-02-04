@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <iostream>
 #include "popt_pp.h"
+#include <sys/stat.h>
 
 using namespace std;
 using namespace cv;
@@ -16,6 +17,11 @@ vector< vector< Point2f > > left_img_points;
 
 Mat img, gray;
 Size im_size;
+
+bool doesExist (const std::string& name) {
+  struct stat buffer;   
+  return (stat (name.c_str(), &buffer) == 0); 
+}
 
 void setup_calibration(int board_width, int board_height, int num_imgs, 
                        float square_size, char* imgs_directory, char* imgs_filename,

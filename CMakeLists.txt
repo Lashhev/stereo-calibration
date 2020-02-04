@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 2.8.11)
 project(CALIB_CAM)
+set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=armv8-a+crc -mtune=cortex-a53 -mfpu=crypto-neon-fp-armv8 -mfloat-abi=hard -ftree-vectorize -funsafe-math-optimizations -O3 -pipe")
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
